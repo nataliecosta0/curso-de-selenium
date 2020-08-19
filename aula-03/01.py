@@ -11,23 +11,19 @@ url: https://curso-python-selenium.netlify.app/exercicio_01.html
 from selenium.webdriver import Firefox
 from time import sleep
 
-url = 'https://curso-python-selenium.netlify.app/aula_03.html'
+url = 'https://curso-python-selenium.netlify.app/exercicio_01.html'
+browser = Firefox()
+browser.get(url)
+sleep(7)
 
-navegador = Firefox()
+title = browser.find_element_by_tag_name('h1')
+dict2 = {}
 
-navegador.get(url)
+for number in range(3):
+  find_p = browser.find_elements_by_tag_name('p')
+  valor = find_p[number].text
+  chave = browser.find_element_by_xpath(f'/html/body/p[text()="{valor}"]').get_attribute("atributo")
+  dict2.update({chave:valor})
 
-sleep(1)
-
-a = navegador.find_element_by_tag_name('a')
-
-
-for click in range(10):
-    ps = navegador.find_elements_by_tag_name('p')
-    a.click()
-    print(f'Valor do ultimo p: {ps[-1].text} valor do click: {click}')
-
-    print(f'Os valors são iguais {ps[-1].text == str(click)}')
-
-
-navegador.quit()
+print({title.text:dict2})
+browser.quit()
