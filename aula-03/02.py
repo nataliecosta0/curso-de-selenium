@@ -27,4 +27,3 @@ while expect_position_number != lala:
 		number_give_from_game = num.text
 		if number_give_from_game==expect_position_number:
 			break
-    
