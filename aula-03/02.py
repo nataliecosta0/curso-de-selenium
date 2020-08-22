@@ -8,6 +8,7 @@ url: https://curso-python-selenium.netlify.app/exercicio_02.html
 from selenium.webdriver import Firefox
 from time import sleep
 
+
 url = 'https://curso-python-selenium.netlify.app/exercicio_02.html'
 browser = Firefox()
 browser.get(url)
