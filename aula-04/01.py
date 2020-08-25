@@ -9,7 +9,7 @@ from time import sleep
 url = 'https://selenium.dunossauro.live/exercicio_03.html'
 browser = Firefox()
 browser.get(url)
-sleep(5)
+sleep(7)
 
 def find_start(browser, main, anchor):
 	"""
@@ -27,7 +27,7 @@ def find_start(browser, main, anchor):
 	anchor = main.find_element_by_tag_name(anchor)
 	return anchor
 
-def select_answer(browser, main, anchor, answer):
+def select_answer(browser, main, anchor, attribute_answer, answer):
 	"""
 	Encontra o link com a resposta desejada dentro da atráves do atributo
 	attr.
@@ -41,12 +41,15 @@ def select_answer(browser, main, anchor, answer):
 	Return:
 		element: Retorna link encontrado dentro do atributo attr.
 	"""
+	sleep(7)
 	main = browser.find_element_by_tag_name(main)
 	anchor = main.find_elements_by_tag_name(anchor)
 
 	for element in anchor:
-		if (element.get_attribute('attr')) == answer:
+		if (element.get_attribute(attribute_answer)) == answer:
 			return element
 
 find_start(browser, 'main', 'a').click()
-select_answer(browser, 'main', 'a', "errado").click()
+select_answer(browser, 'main', 'a', "attr", "errado").click()
+sleep(20)
+select_answer(browser, 'main', 'a', "attr", "certo").click()
